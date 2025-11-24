@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+
+:root {
+    --main-pink: #c9307c;
+    --accent-blue: #2ca8ff;
+    --accent-yellow: #ffd166;
+    --dark-black: #000000;
+    --light-gray: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Prompt", sans-serif;
+    font-weight: 400;
+}
+
+body {
+    background: var(--light-gray);
+    color: var(--dark-black);
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    position: relative;
+    background: linear-gradient(135deg, #c9307c, #f48fb1); /* ชมพูเข้ม → ชมพูอ่อน */
+    padding: 50px;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 2rem;
+    animation: headerFade 2s ease-in-out;
+}
+
+header .logo img {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 30px;
+    left: 90px;
+    animation: logoBounce 1.5s ease-in-out infinite alternate;
+}
+
+/* Nav */
+nav {
+    display: flex;
+    justify-content: center;
+    background: var(--dark-black);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: var(--main-pink);
+    transform: scale(1.05);
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 0;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 1.8rem;
+    color: var(--main-pink);
+    margin-bottom: 20px;
+    border-left: 5px solid var(--main-pink);
+    padding-left: 12px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-yellow);
+    border-radius: 3px;
+    animation: underlineSlide 1.5s infinite alternate;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(0);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Video */
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.video-wrapper video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+}
+
+.video-wrapper video:hover {
+    transform: scale(1.02);
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    background: var(--dark-black);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-yellow);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes logoBounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes headerFade {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes underlineSlide {
+    0% { width: 30px; }
+    100% { width: 50px; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav { flex-direction: column; }
+    nav a { text-align: center; }
+}
+/* Teacher Grid */
+.teacher-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 รูปต่อแถว */
+    gap: 25px;
+    margin-top: 30px;
+    justify-items: center;
+}
+
+.teacher-card {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 300px; /* ลดขนาดไม่ให้ใหญ่เกินไป */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.teacher-card img {
+    width: 100%;
+    height: 250px; /* ปรับให้เหมาะสม */
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.teacher-card p {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Hover Effect */
+.teacher-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.teacher-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .teacher-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 รูปต่อแถว */
+    }
+}
+
+@media (max-width: 600px) {
+    .teacher-grid {
+        grid-template-columns: 1fr; /* 1 รูปต่อแถว */
+    }
+}
